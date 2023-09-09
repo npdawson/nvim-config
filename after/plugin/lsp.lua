@@ -5,7 +5,7 @@ lsp.ensure_installed({
 	'tsserver',
 	'eslint',
 	'hls',
-	'sumneko_lua',
+	'lua_ls',
 	'rust_analyzer',
 })
 
