@@ -26,6 +26,4 @@ return {
 		main = 'ibl',
 		opts = {},
 	},
-
-	{ 'habamax/vim-odin' }
 }
