@@ -1,5 +1,7 @@
 -- other plugins I haven't categorized yet
 return {
+    { 'echasnovski/mini.icons', version = false },
+    { "nvim-tree/nvim-web-devicons", opts = {} },
     { 'folke/which-key.nvim', opts = {} },
 
     {
