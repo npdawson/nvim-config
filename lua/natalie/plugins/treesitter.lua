@@ -1,8 +1,13 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
-	config = function()
-		require('nvim-treesitter.configs').setup({
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {}
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		opts = {
 			-- Add languages to be installed here that you want installed for treesitter
 			ensure_installed = {
 				'c', 'cpp', 'go', 'lua', 'python', 'rust', 'odin',
@@ -72,6 +77,6 @@ return {
 					},
 				},
 			},
-		})
-	end
+		}
+	}
 }
