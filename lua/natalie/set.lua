@@ -10,7 +10,9 @@ vim.opt.incsearch = true
 vim.wo.number = true
 vim.wo.relativenumber = true
 
-vim.opt.mouse = 'a'
+vim.opt.cursorline = true
+
+-- vim.opt.mouse = 'a'
 
 vim.opt.smartindent = true
 vim.opt.breakindent = true
@@ -18,9 +20,6 @@ vim.opt.breakindent = true
 vim.opt.wrap = false
 
 vim.opt.undofile = true
-
--- preview :substite commands in a split window
--- vim.opt.inccommand = "split"
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
@@ -38,7 +37,7 @@ vim.opt.updatetime = 50
 vim.opt.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = 'menuone,noselect'
+vim.opt.completeopt = "menuone,noselect"
 
 -- NOTE: You should make sure your terminal supports this
 vim.opt.termguicolors = true
