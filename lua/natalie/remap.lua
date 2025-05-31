@@ -34,6 +34,8 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
+vim.keymap.set("n", "<leader>w", ":w<CR>", { noremap = true, silent = true })
+
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
@@ -49,3 +51,12 @@ vim.keymap.set('n', '[d', vim.diagnostic.get_prev, { desc = 'Go to previous diag
 vim.keymap.set('n', ']d', vim.diagnostic.get_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+vim.keymap.set({ "n", "x" }, "gca", vim.lsp.buf.code_action, { desc = "Go to code action" })
+
+vim.keymap.set("n", "<leader>z", ':lua require("FTerm").open()<CR>')
+vim.keymap.set("t", "<Esc>", '<C-\\><C-n><CMD>lua require("FTerm").close()<CR>')
+
+vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<CR>", { noremap = true, silent = true })

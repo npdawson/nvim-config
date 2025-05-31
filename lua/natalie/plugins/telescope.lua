@@ -11,7 +11,7 @@ return {
 					return vim.fn.executable "cmake" == 1
 				end,
 			},
-			"nvim-telescope/telescope-ui-select.nvim",
+			-- "nvim-telescope/telescope-ui-select.nvim",
 		},
 	},
 }
