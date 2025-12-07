@@ -48,3 +48,6 @@ vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80"
 
 vim.opt.fileencodings = "utf-8,cp932,sjis,default"
+
+vim.opt.winborder = "rounded"
+vim.opt.winblend = 15
