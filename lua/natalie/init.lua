@@ -194,6 +194,11 @@ local servers = {
 			},
 		},
 	},
+	clangd = {
+		init_options = {
+			fallbackFlags = { '--std=gnu23' }
+		},
+	},
 }
 
 local ensure_installed = vim.tbl_keys(servers or {})
