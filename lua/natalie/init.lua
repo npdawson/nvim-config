@@ -201,6 +201,18 @@ local servers = {
 	},
 }
 
+-- separate config for zig/zls nightly
+vim.lsp.config("zls", {
+	settings = {
+		zls = {
+			enable_build_on_save = true,
+			semantic_tokens = "partial",
+		},
+	},
+})
+
+vim.lsp.enable("zls")
+
 local ensure_installed = vim.tbl_keys(servers or {})
 -- add other stuff with default settings
 vim.list_extend(ensure_installed, {
