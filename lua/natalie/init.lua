@@ -212,6 +212,7 @@ vim.lsp.config("zls", {
 })
 
 vim.lsp.enable("zls")
+vim.lsp.enable("gdscript")
 
 local ensure_installed = vim.tbl_keys(servers or {})
 -- add other stuff with default settings
