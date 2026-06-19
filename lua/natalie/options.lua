@@ -51,3 +51,7 @@ vim.opt.fileencodings = "utf-8,cp932,sjis,default"
 
 vim.opt.winborder = "rounded"
 vim.opt.winblend = 15
+
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
