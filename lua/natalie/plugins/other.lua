@@ -8,14 +8,9 @@ return {
 		-- Set lualine as statusline
 		"nvim-lualine/lualine.nvim",
 		-- See `:help lualine.txt`
-		dependencies = {
-			"catppuccin/nvim",
-			"echasnovski/mini.icons"
-		},
 		opts = {
 			options = {
 				icons_enabled = true,
-				theme = "catppuccin",
 				-- component_separators = "|",
 				-- section_separators = "",
 			},
