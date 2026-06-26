@@ -59,8 +59,8 @@ return {
 			-- "nvim-telescope/telescope-ui-select.nvim",
 		},
 		keys = {
-			{ "<leader>?",       require("telescope.builtin").oldfiles, desc = "[?] Find recently opened files" },
-			{ "<leader><space>", require("telescope.builtin").buffers,  desc = "[ ] Find existing buffers" },
+			{ "<leader>?",       function() require("telescope.builtin").oldfiles() end, desc = "[?] Find recently opened files" },
+			{ "<leader><space>", function() require("telescope.builtin").buffers() end,  desc = "[ ] Find existing buffers" },
 			{
 				"<leader>/",
 				function()
@@ -73,15 +73,15 @@ return {
 				desc = "[/] Fuzzily search in current buffer"
 			},
 			{ "<leader>s/", telescope_live_grep_open_files,           desc = "[S]earch [/] in Open Files" },
-			{ "<leader>ss", require("telescope.builtin").builtin,     desc = "[S]earch [S]elect Telescope" },
-			{ "<leader>gf", require("telescope.builtin").git_files,   desc = "Search [G]it [F]iles" },
-			{ "<leader>sf", require("telescope.builtin").find_files,  desc = "[S]earch [F]iles" },
-			{ "<leader>sh", require("telescope.builtin").help_tags,   desc = "[S]earch [H]elp" },
-			{ "<leader>sw", require("telescope.builtin").grep_string, desc = "[S]earch current [W]ord" },
-			{ "<leader>sg", require("telescope.builtin").live_grep,   desc = "[S]earch by [G]rep" },
+			{ "<leader>ss", function() require("telescope.builtin").builtin() end,     desc = "[S]earch [S]elect Telescope" },
+			{ "<leader>gf", function() require("telescope.builtin").git_files() end,   desc = "Search [G]it [F]iles" },
+			{ "<leader>sf", function() require("telescope.builtin").find_files() end,  desc = "[S]earch [F]iles" },
+			{ "<leader>sh", function() require("telescope.builtin").help_tags() end,   desc = "[S]earch [H]elp" },
+			{ "<leader>sw", function() require("telescope.builtin").grep_string() end, desc = "[S]earch current [W]ord" },
+			{ "<leader>sg", function() require("telescope.builtin").live_grep() end,   desc = "[S]earch by [G]rep" },
 			{ "<leader>sG", ":LiveGrepGitRoot<cr>",                   desc = "[S]earch by [G]rep on Git Root" },
-			{ "<leader>sd", require("telescope.builtin").diagnostics, desc = "[S]earch [D]iagnostics" },
-			{ "<leader>sr", require("telescope.builtin").resume,      desc = "[S]earch [R]esume" },
+			{ "<leader>sd", function() require("telescope.builtin").diagnostics() end, desc = "[S]earch [D]iagnostics" },
+			{ "<leader>sr", function() require("telescope.builtin").resume() end,      desc = "[S]earch [R]esume" },
 		},
 	},
 }

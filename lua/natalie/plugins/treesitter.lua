@@ -8,23 +8,24 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		main = "nvim-treesitter.configs",
+		main = "nvim-treesitter",
 		opts = {
+			-- No longer available in 0.12
 			-- Add languages to be installed here that you want installed for treesitter
-			ensure_installed = {
-				"c",
-				"cpp",
-				"go",
-				"lua",
-				"python",
-				"rust",
-				"odin",
-				"javascript",
-				"typescript",
-				"vimdoc",
-				"vim",
-				"bash",
-			},
+			-- ensure_installed = {
+			-- 	"c",
+			-- 	"cpp",
+			-- 	"go",
+			-- 	"lua",
+			-- 	"python",
+			-- 	"rust",
+			-- 	"odin",
+			-- 	"javascript",
+			-- 	"typescript",
+			-- 	"vimdoc",
+			-- 	"vim",
+			-- 	"bash",
+			-- },
 
 			-- Install parsers synchronously (only applied to `ensure_installed`)
 			sync_install = false,
@@ -34,8 +35,10 @@ return {
 
 			ignore_install = {},
 
-			highlight = { enable = true },
-			indent = { enable = true },
+			-- 0.12 update, remove the following
+			-- highlight = { enable = true },
+			-- indent = { enable = true },
+
 			incremental_selection = {
 				enable = true,
 				keymaps = {
@@ -90,5 +93,26 @@ return {
 				},
 			},
 		},
+		init = function ()
+			vim.api.nvim_create_autocmd('FileType', {
+				callback = function ()
+					-- Enable treesitter highlighting and disable regex syntax
+					pcall(vim.treesitter.start)
+					-- Enable treesitter-based indentation
+					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end
+			})
+
+			local ensureInstalled = {
+				'lua', 'python', 'typescript', 'odin', 'c', 'cpp',
+			}
+			local alreadyInstalled = require('nvim-treesitter.config').get_installed()
+			local parsersToInstall = vim.iter(ensureInstalled)
+				:filter(function (parser)
+					return not vim.tbl_contains(alreadyInstalled, parser)
+				end)
+				:totable()
+			require('nvim-treesitter').install(parsersToInstall)
+		end,
 	},
 }

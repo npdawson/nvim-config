@@ -7,7 +7,6 @@ require("natalie.lazy")
 pcall(require("telescope").load_extension, "fzf")
 -- pcall(require("telescope").load_extension, "ui-select")
 
-
 -- document existing key chains
 require("which-key").add({
 	{ "<leader>c", group = "[C]ode" },
@@ -50,11 +49,6 @@ local servers = {
 					enable = false,
 				},
 			},
-		},
-	},
-	clangd = {
-		init_options = {
-			fallbackFlags = { '--std=gnu23' }
 		},
 	},
 }
