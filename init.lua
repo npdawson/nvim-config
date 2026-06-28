@@ -202,10 +202,11 @@ vim.pack.add {
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 }
 
-	-- telescope
-	-- 'https://github.com/nvim-lua/plenary.nvim',
-	-- 'https://github.com/nvim-telescope/telescope.nvim',
-	-- 'https://github.com/nvim-telescope/telescope-fzf-native.nvim', -- Optional but recommended
+require('nvim-treesitter').install {
+	'c',
+	'cpp',
+	'lua',
+	'odin',
 }
 
 require('mini.surround').setup {}
