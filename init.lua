@@ -168,11 +168,13 @@ vim.pack.add {
 
 	-- fancy features
 	{ src = "https://github.com/windwp/nvim-autopairs" },
-	{ src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/nvim-mini/mini.surround" },
 	{ src = "https://github.com/nvim-mini/mini.pick" },
 
+	-- file explorer
+	{ src = "https://github.com/stevearc/oil.nvim" },
+
 	-- highlight todo's and similar in comments
-	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/folke/todo-comments.nvim" },
 
 	-- Treesitter
@@ -190,7 +192,7 @@ vim.pack.add {
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 
 	-- which key
-	{ src = "https://github.com/echasnovski/mini.icons" },
+	{ src = "https://github.com/nvim-mini/mini.icons" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/folke/which-key.nvim" },
 
@@ -203,10 +205,12 @@ vim.pack.add {
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 
 	-- telescope
+	-- 'https://github.com/nvim-lua/plenary.nvim',
 	-- 'https://github.com/nvim-telescope/telescope.nvim',
 	-- 'https://github.com/nvim-telescope/telescope-fzf-native.nvim', -- Optional but recommended
 }
 
+require('mini.surround').setup {}
 require('mini.pick').setup {}
 
 keymap('n', '<leader>sf', "<cmd>Pick files<CR>")
