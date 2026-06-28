@@ -105,6 +105,7 @@ keymap('n', ']d', vim.diagnostic.get_next, { desc = 'Go to next diagnostic messa
 keymap('n', '<leader>l', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 keymap("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
+-- gotos
 keymap("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 keymap("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
 -- keymap({ "n", "x" }, "gca", vim.lsp.buf.code_action, { desc = "Go to code action" })
@@ -154,16 +155,6 @@ local hooks = function(ev)
 	if name == 'nvim-treesitter' and (kind == 'install' or kind == 'update') then
 		vim.cmd('TSUpdate')
 	end
-
-	if name == 'telescope-fzf-native.nvim' and (kind == 'install' or kind == 'update') then
-		vim.system({ 'cmake', '-S.', '-Bbuild', '-DCMAKE_BUILD_TYPE=Release' }, { cwd = ev.data.path }, function(obj)
-			if obj.code ~= 0 then
-				vim.notify 'cmake --build failed for telescope-fzf-native.nvim'
-			else
-				vim.system({ 'cmake', '--build', 'build', '--config', 'Release', '--target', 'install' }, { cwd = ev.data.path })
-			end
-		end)
-	end
 end
 
 autocmd('PackChanged', { callback = hooks })
@@ -171,8 +162,10 @@ autocmd('PackChanged', { callback = hooks })
 -- ==Plugins==
 vim.pack.add {
 	-- colorschemes
-	{ src = "https://github.com/catppuccin/nvim",       name = "catppuccin" },
-	-- { src = "https://github.com/folke/tokyonight.nvim", name = "tokyonight" },
+	{
+		src = "https://github.com/catppuccin/nvim",
+		name = "catppuccin"
+	},
 
 	-- fancy features
 	{ src = "https://github.com/windwp/nvim-autopairs" },
@@ -188,11 +181,6 @@ vim.pack.add {
 	-- Treesitter
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 
-	-- completion
-	-- { src = "https://github.com/rafamadriz/friendly-snippets" },
-	-- { src = "https://github.com/saghen/blink.lib" },
-	-- { src = "https://github.com/saghen/blink.cmp" },
-
 	-- LSP
 	{ src = "https://github.com/williamboman/mason.nvim" },
 	{ src = "https://github.com/williamboman/mason-lspconfig.nvim" },
@@ -204,6 +192,7 @@ vim.pack.add {
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/folke/which-key.nvim" },
 
+	-- status stuff
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
 
@@ -211,6 +200,7 @@ vim.pack.add {
 	{ src = "https://github.com/tpope/vim-fugitive" },
 	{ src = "https://github.com/tpope/vim-rhubarb" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
+}
 
 	-- telescope
 	-- 'https://github.com/nvim-lua/plenary.nvim',
@@ -230,12 +220,6 @@ keymap('n', '<leader>sr', "<cmd>Pick resume<CR>")
 
 require('oil').setup {}
 keymap('n', '<leader>e', "<cmd>Oil<CR>")
-
--- local cmp = require("blink.cmp")
--- cmp.build():pwait()
--- cmp.setup {
--- 	completion = { documentation = { auto_show = true } },
--- }
 
 require('gitsigns').setup {
 	-- See `:help gitsigns.txt`
@@ -321,20 +305,20 @@ require("lualine").setup {}
 
 ---@type vim.lsp.Config
 local config = {
-  ---@type lspconfig.settings.lua_ls
-  settings = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT',
-      },
-      workspace = {
-        preloadFileSize = 10000,
-        library = {
-          vim.env.VIMRUNTIME,
-        }
-      },
-    },
-  },
+	---@type lspconfig.settings.lua_ls
+	settings = {
+		Lua = {
+			runtime = {
+				version = 'LuaJIT',
+			},
+			workspace = {
+				preloadFileSize = 10000,
+				library = {
+					vim.env.VIMRUNTIME,
+				}
+			},
+		},
+	},
 }
 
 vim.lsp.config('lua_ls', config)
@@ -353,14 +337,15 @@ require("which-key").add({
 -- register which-key VISUAL mode
 -- required for visual <leader>hs (hunk stage) to work
 require("which-key").add({
-	{ "<leader>", group = "VISUAL <leader>", mode = "v" },
-	{ "<leader>h", desc = "Git [H]unk", mode = "v" },
+	{ "<leader>",  group = "VISUAL <leader>", mode = "v" },
+	{ "<leader>h", desc = "Git [H]unk",       mode = "v" },
 })
 
 function ColorMyPencils(color)
 	color = color or "catppuccin" --"tokyonight-moon"
 	vim.cmd.colorscheme(color)
 
+	-- remove bg for transparency
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 end
 
