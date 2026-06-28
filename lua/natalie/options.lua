@@ -1,4 +1,4 @@
-vim.g.loaded_netrw = 1
+vim.g.loaded_netrw = -1
 vim.g.loaded_netrwPlugin = 1
 
 vim.opt.guicursor = ""
@@ -6,7 +6,6 @@ vim.opt.guicursor = ""
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = false
 
 vim.opt.incsearch = true
 
@@ -14,8 +13,6 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 vim.opt.cursorline = true
-
--- vim.opt.mouse = 'a'
 
 vim.opt.smartindent = true
 vim.opt.breakindent = true

@@ -1,9 +1,3 @@
-require("natalie.autocmd")
-require("natalie.keymaps")
-require("natalie.options")
-
-require("natalie.lazy")
-
 pcall(require("telescope").load_extension, "fzf")
 -- pcall(require("telescope").load_extension, "ui-select")
 

@@ -10,23 +10,6 @@ return {
 		build = ":TSUpdate",
 		main = "nvim-treesitter",
 		opts = {
-			-- No longer available in 0.12
-			-- Add languages to be installed here that you want installed for treesitter
-			-- ensure_installed = {
-			-- 	"c",
-			-- 	"cpp",
-			-- 	"go",
-			-- 	"lua",
-			-- 	"python",
-			-- 	"rust",
-			-- 	"odin",
-			-- 	"javascript",
-			-- 	"typescript",
-			-- 	"vimdoc",
-			-- 	"vim",
-			-- 	"bash",
-			-- },
-
 			-- Install parsers synchronously (only applied to `ensure_installed`)
 			sync_install = false,
 
