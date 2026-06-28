@@ -102,7 +102,7 @@ keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- Diagnostic keymaps
 keymap('n', '[d', vim.diagnostic.get_prev, { desc = 'Go to previous diagnostic message' })
 keymap('n', ']d', vim.diagnostic.get_next, { desc = 'Go to next diagnostic message' })
-keymap('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+keymap('n', '<leader>l', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 keymap("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 keymap("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
