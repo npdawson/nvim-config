@@ -117,9 +117,10 @@ keymap('t', '<esc><esc>', '<C-\\><C-n>')
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
--- start terminal in insert mode
 autocmd("TermOpen", {
-	command = "startinsert"
+	desc = "Start in Terminal mode when opening a new terminal",
+	group = augroup("OpenTerminal", { clear = true }),
+	command = "startinsert",
 })
 
 -- See `:help vim.hl.on_yank()`
@@ -133,14 +134,14 @@ autocmd("TextYankPost", {
 
 autocmd({ "BufWritePre" }, {
 	desc = "Remove trailing whitespace before saving buffer",
-	group = augroup("RemoveTrailingWhitespace", {}),
+	group = augroup("RemoveTrailingWhitespace", { clear = true }),
 	pattern = "*",
 	command = [[%s/\s\+$//e]], -- remove trailing whitespace
 })
 
 -- tell omni complete about LSP
 autocmd('LspAttach', {
-	group = augroup('my.lsp', {}),
+	group = augroup('LSPOmniComp', { clear = true }),
 	callback = function(args)
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 		if client:supports_method('textDocument/completion') then
