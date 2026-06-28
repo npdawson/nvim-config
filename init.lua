@@ -215,6 +215,7 @@ require('mini.pick').setup {}
 
 keymap('n', '<leader>sf', "<cmd>Pick files<CR>")
 keymap('n', '<leader>sb', "<cmd>Pick buffers<CR>")
+keymap('n', '<leader><space>', "<cmd>Pick buffers<CR>")
 keymap('n', '<leader>sh', "<cmd>Pick help<CR>")
 keymap('n', '<leader>sg', "<cmd>Pick grep_live<CR>")
 keymap('n', '<leader>sr', "<cmd>Pick resume<CR>")
