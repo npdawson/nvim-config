@@ -109,9 +109,17 @@ keymap("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 keymap("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
 -- keymap({ "n", "x" }, "gca", vim.lsp.buf.code_action, { desc = "Go to code action" })
 
+-- terminal mode
+keymap('t', '<esc><esc>', '<C-\\><C-n>')
+
 -- ==Autocmds==
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
+
+-- start terminal in insert mode
+autocmd("TermOpen", {
+	command = "startinsert"
+})
 
 -- See `:help vim.hl.on_yank()`
 autocmd("TextYankPost", {
